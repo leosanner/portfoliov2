@@ -1,7 +1,9 @@
 # Roadmap
 
-**Current Milestone:** M1 — Foundation
-**Status:** In Progress
+**Current Milestone:** M2 — Core Features
+**Status:** Planning
+
+**Last completed:** M1 — Foundation
 
 ---
 

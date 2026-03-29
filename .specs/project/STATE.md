@@ -10,9 +10,14 @@
 - **API style:** Hono RPC for end-to-end type safety between backend and frontend
 - **CORS:** Configured via `ALLOWED_ORIGIN` env var injected per environment — no hardcoded origins
 - **Database strategy:** Three D1 databases — dev (local Wrangler simulation), preview (per-branch), production
-- **Migrations:** Drizzle-kit generates migration files; CI applies them automatically before deploy
+- **Migrations:** Drizzle-kit generates migration files; CI applies them automatically before deploy. `migrations_dir` = `drizzle/` in wrangler.toml
 - **Testing:** TDD is mandatory — Vitest, tests written before implementation, no exceptions
 - **Env vars:** `.dev.vars` for local (gitignored), `.dev.vars.example` committed as contract, Cloudflare secrets for remote
+- **Drizzle schema location:** `apps/api/src/db/schema.ts`
+- **Auth routes:** Mounted at `/api/auth/**` — Better Auth handles all sub-routes
+- **Admin middleware:** `adminOnly` middleware in `apps/api/src/auth/middleware.ts` — validates session via Better Auth, sets `user` and `session` on Hono context
+- **CI/CD secrets required:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` in GitHub Secrets
+- **pnpm version:** 9.15.4 via corepack
 
 ## Preferences
 
