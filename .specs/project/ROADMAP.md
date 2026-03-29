@@ -1,7 +1,7 @@
 # Roadmap
 
 **Current Milestone:** M1 — Foundation
-**Status:** Planning
+**Status:** In Progress
 
 ---
 
@@ -12,25 +12,25 @@
 
 ### Features
 
-**Monorepo Setup** - PLANNED
+**Monorepo Setup** - DONE
 
 - pnpm workspaces with `apps/web`, `apps/api`, `packages/shared`
 - TypeScript configured across all packages
 - Vitest configured in `apps/api` and `apps/web`
 - Shared ESLint + Prettier config
 
-**Cloudflare Infrastructure** - PLANNED
+**Cloudflare Infrastructure** - DONE
 
 - `wrangler.toml` with dev, preview, and production D1 bindings
 - `.dev.vars` + `.dev.vars.example` pattern established
 - Three D1 databases created (dev local, preview, production)
 - CORS configured via environment variables
 
-**CI/CD Pipelines** - PLANNED
+**CI/CD Pipelines** - DONE
 
 - `deploy-api.yml`: runs migrations + deploys Worker on push to main and PRs
 - `deploy-web.yml`: deploys Pages on push to main and PRs
-- GitHub Secrets configured for each environment
+- GitHub Secrets required: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 - Preview deploys on every PR branch
 
 **Authentication** - PLANNED
