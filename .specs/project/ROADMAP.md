@@ -33,19 +33,20 @@
 - GitHub Secrets required: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 - Preview deploys on every PR branch
 
-**Authentication** - PLANNED
+**Authentication** - DONE
 
 - Better Auth installed and configured in `apps/api`
 - Google OAuth provider set up
-- Auth routes exposed via Hono
-- Session validated in admin-only middleware
-- Frontend login page with Google sign-in button
+- Auth routes exposed via Hono (`/api/auth/**`)
+- Session validated in admin-only middleware (`adminOnly`)
+- Frontend login page with Google sign-in button — PENDING (M1 frontend)
 
-**Drizzle + D1 Baseline** - PLANNED
+**Drizzle + D1 Baseline** - DONE
 
 - Drizzle configured with D1 adapter
-- First migration (users/sessions table from Better Auth)
-- Migration scripts: `db:migrate` (local) and applied automatically in CI
+- First migration (user, session, account, verification tables)
+- Migration scripts: `db:generate`, `db:migrate` (local), applied automatically in CI
+- `migrations_dir` set to `drizzle/` in wrangler.toml for all environments
 
 ---
 

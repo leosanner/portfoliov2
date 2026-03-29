@@ -1,3 +1,8 @@
+import type { Auth } from "./auth";
+
+type AuthSession = Awaited<ReturnType<Auth["api"]["getSession"]>>;
+type NonNullSession = NonNullable<AuthSession>;
+
 export type Env = {
   Bindings: {
     DB: D1Database;
@@ -5,5 +10,9 @@ export type Env = {
     GOOGLE_CLIENT_ID: string;
     GOOGLE_CLIENT_SECRET: string;
     BETTER_AUTH_SECRET: string;
+  };
+  Variables: {
+    user: NonNullSession["user"];
+    session: NonNullSession["session"];
   };
 };
