@@ -6,15 +6,18 @@ compatibility_date = "2025-03-28"
 binding = "DB"
 database_name = "portfolio-dev"
 database_id = "local"
+migrations_dir = "drizzle"
 
 [env.preview]
 [[env.preview.d1_databases]]
 binding = "DB"
 database_name = "portfolio-preview"
 database_id = "REPLACE_WITH_PREVIEW_DB_ID"
+migrations_dir = "drizzle"
 
 [env.production]
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "portfolio-prod"
 database_id = "REPLACE_WITH_PROD_DB_ID"
+migrations_dir = "drizzle"
