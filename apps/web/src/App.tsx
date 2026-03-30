@@ -1,3 +1,20 @@
+import { Route, Switch } from "wouter";
+import { HomePage } from "./pages/HomePage";
+import { ProjectPage } from "./pages/ProjectPage";
+import { LoginPage } from "./pages/LoginPage";
+import { AdminDashboard } from "./pages/AdminDashboard";
+import { NotFoundPage } from "./pages/NotFoundPage";
+
 export function App() {
-  return <h1>Portfolio</h1>;
+  return (
+    <Switch>
+      <Route path="/" component={HomePage} />
+      <Route path="/projects/:slug">
+        {(params) => <ProjectPage slug={params.slug} />}
+      </Route>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  );
 }
