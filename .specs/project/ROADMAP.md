@@ -1,7 +1,9 @@
 # Roadmap
 
-**Current Milestone:** M1 — Foundation
+**Current Milestone:** M2 — Core Features
 **Status:** Planning
+
+**Last completed:** M1 — Foundation
 
 ---
 
@@ -12,40 +14,41 @@
 
 ### Features
 
-**Monorepo Setup** - PLANNED
+**Monorepo Setup** - DONE
 
 - pnpm workspaces with `apps/web`, `apps/api`, `packages/shared`
 - TypeScript configured across all packages
 - Vitest configured in `apps/api` and `apps/web`
 - Shared ESLint + Prettier config
 
-**Cloudflare Infrastructure** - PLANNED
+**Cloudflare Infrastructure** - DONE
 
 - `wrangler.toml` with dev, preview, and production D1 bindings
 - `.dev.vars` + `.dev.vars.example` pattern established
 - Three D1 databases created (dev local, preview, production)
 - CORS configured via environment variables
 
-**CI/CD Pipelines** - PLANNED
+**CI/CD Pipelines** - DONE
 
 - `deploy-api.yml`: runs migrations + deploys Worker on push to main and PRs
 - `deploy-web.yml`: deploys Pages on push to main and PRs
-- GitHub Secrets configured for each environment
+- GitHub Secrets required: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 - Preview deploys on every PR branch
 
-**Authentication** - PLANNED
+**Authentication** - DONE
 
 - Better Auth installed and configured in `apps/api`
 - Google OAuth provider set up
-- Auth routes exposed via Hono
-- Session validated in admin-only middleware
-- Frontend login page with Google sign-in button
+- Auth routes exposed via Hono (`/api/auth/**`)
+- Session validated in admin-only middleware (`adminOnly`)
+- Frontend login page with Google sign-in button — PENDING (M1 frontend)
 
-**Drizzle + D1 Baseline** - PLANNED
+**Drizzle + D1 Baseline** - DONE
 
 - Drizzle configured with D1 adapter
-- First migration (users/sessions table from Better Auth)
-- Migration scripts: `db:migrate` (local) and applied automatically in CI
+- First migration (user, session, account, verification tables)
+- Migration scripts: `db:generate`, `db:migrate` (local), applied automatically in CI
+- `migrations_dir` set to `drizzle/` in wrangler.toml for all environments
 
 ---
 

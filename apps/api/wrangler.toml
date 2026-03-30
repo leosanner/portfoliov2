@@ -1,0 +1,23 @@
+name = "portfolio-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-28"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-dev"
+database_id = "local"
+migrations_dir = "drizzle"
+
+[env.preview]
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "portfolio-preview"
+database_id = "0463c6cc-376a-4c4a-9b6e-8aba1ac763b9"
+migrations_dir = "drizzle"
+
+[env.production]
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "portfolio-prod"
+database_id = "c8916be1-a897-4840-9823-a09d258b4bc1"
+migrations_dir = "drizzle"
