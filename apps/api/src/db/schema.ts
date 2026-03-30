@@ -53,3 +53,18 @@ export const verification = sqliteTable("verification", {
   createdAt: integer("created_at", { mode: "timestamp" }),
   updatedAt: integer("updated_at", { mode: "timestamp" }),
 });
+
+export const project = sqliteTable("project", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  description: text("description").notNull(),
+  content: text("content").notNull(),
+  youtubeUrl: text("youtube_url"),
+  githubUrl: text("github_url"),
+  techStack: text("tech_stack", { mode: "json" }).notNull().$type<string[]>(),
+  published: integer("published", { mode: "boolean" }).notNull().default(false),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+});
