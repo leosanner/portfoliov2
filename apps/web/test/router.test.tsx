@@ -1,22 +1,41 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { memoryLocation } from "wouter/memory-location";
 import { Router } from "wouter";
+import type { ReactNode } from "react";
+
+vi.mock("../src/lib/api", () => ({
+  api: {
+    api: {
+      projects: {
+        $get: vi.fn().mockResolvedValue(Response.json({ projects: [] })),
+      },
+    },
+  },
+}));
+
 import { App } from "../src/App";
 
 function renderAtPath(path: string) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
   const { hook } = memoryLocation({ path, static: true });
-  return render(
-    <Router hook={hook}>
-      <App />
-    </Router>,
-  );
+  function Wrapper({ children }: { children: ReactNode }) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Router hook={hook}>{children}</Router>
+      </QueryClientProvider>
+    );
+  }
+  return render(<App />, { wrapper: Wrapper });
 }
 
 describe("Router", () => {
-  it("renders home page at /", () => {
+  it("renders home page at /", async () => {
     renderAtPath("/");
-    expect(screen.getByText("Portfolio")).toBeInTheDocument();
+    expect(await screen.findByText("Portfolio")).toBeInTheDocument();
   });
 
   it("renders project page at /projects/:slug", () => {

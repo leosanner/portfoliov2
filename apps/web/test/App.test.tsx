@@ -1,18 +1,35 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { memoryLocation } from "wouter/memory-location";
 import { Router } from "wouter";
+
+vi.mock("../src/lib/api", () => ({
+  api: {
+    api: {
+      projects: {
+        $get: vi.fn().mockResolvedValue(Response.json({ projects: [] })),
+      },
+    },
+  },
+}));
+
 import { App } from "../src/App";
 
 describe("App", () => {
-  it("renders the heading", () => {
+  it("renders the heading", async () => {
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
     const { hook } = memoryLocation({ path: "/", static: true });
     render(
-      <Router hook={hook}>
-        <App />
-      </Router>,
+      <QueryClientProvider client={queryClient}>
+        <Router hook={hook}>
+          <App />
+        </Router>
+      </QueryClientProvider>,
     );
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+    expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
       "Portfolio",
     );
   });
