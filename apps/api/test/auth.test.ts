@@ -21,8 +21,6 @@ describe("Admin middleware", () => {
   it("returns 401 when no session cookie is present", async () => {
     const { adminOnly } = await import("../src/auth/middleware");
     const { Hono } = await import("hono");
-    type TestEnv = typeof import("../src/env").Env;
-
     const testApp = new Hono<{ Bindings: typeof env }>();
     testApp.use("/admin/*", adminOnly);
     testApp.get("/admin/test", (c) => c.json({ ok: true }));

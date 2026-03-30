@@ -16,15 +16,22 @@
     "test:web": "pnpm --filter @portfolio/web test",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
     "eslint": "^9.24.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.5.0",
     "typescript": "^5.8.0",
     "typescript-eslint": "^8.30.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{ts,tsx,js,json,md}": "prettier --write"
   }
 }
