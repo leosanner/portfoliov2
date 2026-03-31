@@ -1,7 +1,7 @@
 # Roadmap
 
 **Current Milestone:** M2 — Core Features
-**Status:** Planning
+**Status:** In Progress
 
 **Last completed:** M1 — Foundation
 
@@ -41,7 +41,7 @@
 - Google OAuth provider set up
 - Auth routes exposed via Hono (`/api/auth/**`)
 - Session validated in admin-only middleware (`adminOnly`)
-- Frontend login page with Google sign-in button — PENDING (M1 frontend)
+- Frontend login page with Google sign-in button — DONE (completed in M2)
 
 **Drizzle + D1 Baseline** - DONE
 
@@ -59,25 +59,28 @@
 
 ### Features
 
-**Project Management (Admin)** - PLANNED
+**Project Management (Admin)** - IN PROGRESS
 
-- Admin panel route (protected by auth middleware)
-- Create project form: title, description, YouTube URL, GitHub URL, tech stack tags, markdown content
-- Edit project
-- Delete project (with confirmation)
-- Project list in admin dashboard
+- Admin panel route (protected by auth middleware) — DONE
+- Admin layout with sidebar navigation — DONE
+- Create project form: title, description, YouTube URL, GitHub URL, tech stack tags, markdown content — DONE
+- Delete project (with confirmation dialog) — DONE
+- Project list in admin dashboard — DONE
+- Edit project page (wiring ProjectForm to edit route) — PENDING
+- Login page with Google OAuth — DONE
 
-**Public Portfolio** - PLANNED
+**Public Portfolio** - DONE
 
-- Public homepage listing all projects
-- Individual project page: YouTube embed, markdown rendered, tech stack badges, GitHub link
-- Basic responsive layout
+- Public homepage listing all projects — DONE
+- Individual project page: YouTube embed, markdown rendered, tech stack badges, GitHub link — DONE
+- Basic responsive layout — DONE
 
-**Hono RPC Integration** - PLANNED
+**Hono RPC Integration** - DONE
 
-- Typed route definitions in `packages/shared`
-- Frontend consumes API via Hono RPC client (no manual fetch calls)
-- End-to-end type safety validated
+- Typed route definitions in `packages/shared` (Zod schemas + types) — DONE
+- Frontend consumes API via Hono RPC client — DONE
+- Admin CRUD API routes (create, read, update, delete) — DONE
+- Public API routes (list published, get by slug) — DONE
 
 ---
 
