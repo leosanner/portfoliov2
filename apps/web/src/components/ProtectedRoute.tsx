@@ -9,7 +9,7 @@ export function ProtectedRoute({ children }: { children: ReactNode }) {
     return <p>Loading...</p>;
   }
 
-  if (!session) {
+  if (!session?.user) {
     return <Redirect to="/login" />;
   }
 
