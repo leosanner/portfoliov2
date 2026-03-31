@@ -17,6 +17,7 @@ import { api } from "../../src/lib/api";
 import { HomePage } from "../../src/pages/HomePage";
 
 const mockProjectsGet = vi.mocked(api.api.projects.$get);
+type ProjectsResponse = Awaited<ReturnType<typeof mockProjectsGet>>;
 
 function createWrapper() {
   const queryClient = new QueryClient({
@@ -75,7 +76,7 @@ describe("HomePage", () => {
 
   it("renders project cards when data loads", async () => {
     mockProjectsGet.mockResolvedValue(
-      Response.json({ projects: fakeProjects }),
+      Response.json({ projects: fakeProjects }) as unknown as ProjectsResponse,
     );
 
     render(<HomePage />, { wrapper: createWrapper() });
@@ -87,7 +88,7 @@ describe("HomePage", () => {
 
   it("renders tech stack badges", async () => {
     mockProjectsGet.mockResolvedValue(
-      Response.json({ projects: fakeProjects }),
+      Response.json({ projects: fakeProjects }) as unknown as ProjectsResponse,
     );
 
     render(<HomePage />, { wrapper: createWrapper() });
@@ -99,7 +100,7 @@ describe("HomePage", () => {
 
   it("renders links to project detail pages", async () => {
     mockProjectsGet.mockResolvedValue(
-      Response.json({ projects: fakeProjects }),
+      Response.json({ projects: fakeProjects }) as unknown as ProjectsResponse,
     );
 
     render(<HomePage />, { wrapper: createWrapper() });
@@ -109,7 +110,9 @@ describe("HomePage", () => {
   });
 
   it("shows empty state when no projects", async () => {
-    mockProjectsGet.mockResolvedValue(Response.json({ projects: [] }));
+    mockProjectsGet.mockResolvedValue(
+      Response.json({ projects: [] }) as unknown as ProjectsResponse,
+    );
 
     render(<HomePage />, { wrapper: createWrapper() });
 

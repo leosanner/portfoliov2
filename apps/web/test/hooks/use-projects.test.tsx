@@ -57,7 +57,9 @@ describe("useProjects", () => {
 
   it("fetches published projects", async () => {
     mockProjectsGet.mockResolvedValue(
-      Response.json({ projects: [fakeProject] }),
+      Response.json({
+        projects: [fakeProject],
+      }) as unknown as Awaited<ReturnType<typeof mockProjectsGet>>,
     );
 
     const { result } = renderHook(() => useProjects(), {
