@@ -10,7 +10,7 @@ export function LoginPage() {
     return <p>Loading...</p>;
   }
 
-  if (session) {
+  if (session?.user) {
     return <Redirect to="/admin" />;
   }
 
