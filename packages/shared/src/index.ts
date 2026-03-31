@@ -1,2 +1,6 @@
-// Hono RPC route types and Zod schemas will be exported from here
-export {};
+export {
+  createProjectSchema,
+  updateProjectSchema,
+  type CreateProjectInput,
+  type UpdateProjectInput,
+} from "./schemas/project";

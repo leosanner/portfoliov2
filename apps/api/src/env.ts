@@ -1,4 +1,5 @@
 import type { Auth } from "./auth";
+import type { Database } from "./db";
 
 type AuthSession = Awaited<ReturnType<Auth["api"]["getSession"]>>;
 type NonNullSession = NonNullable<AuthSession>;
@@ -14,5 +15,6 @@ export type Env = {
   Variables: {
     user: NonNullSession["user"];
     session: NonNullSession["session"];
+    db: Database;
   };
 };
