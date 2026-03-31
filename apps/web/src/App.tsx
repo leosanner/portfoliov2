@@ -4,6 +4,7 @@ import { ProjectPage } from "./pages/ProjectPage";
 import { LoginPage } from "./pages/LoginPage";
 import { AdminDashboard } from "./pages/AdminDashboard";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 export function App() {
   return (
@@ -13,7 +14,11 @@ export function App() {
         {(params) => <ProjectPage slug={params.slug} />}
       </Route>
       <Route path="/login" component={LoginPage} />
-      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin">
+        <ProtectedRoute>
+          <AdminDashboard />
+        </ProtectedRoute>
+      </Route>
       <Route component={NotFoundPage} />
     </Switch>
   );
