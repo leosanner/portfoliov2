@@ -10,7 +10,7 @@ export function LoginPage() {
     return <p>Loading...</p>;
   }
 
-  if (session) {
+  if (session?.user) {
     return <Redirect to="/admin" />;
   }
 
@@ -19,7 +19,7 @@ export function LoginPage() {
       setError(null);
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/admin",
+        callbackURL: `${window.location.origin}/admin`,
       });
     } catch {
       setError("Failed to sign in. Please try again.");

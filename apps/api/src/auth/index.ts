@@ -13,7 +13,9 @@ export function createAuth(env: Env["Bindings"]) {
       schema,
     }),
     secret: env.BETTER_AUTH_SECRET,
-    baseURL: env.ALLOWED_ORIGIN,
+    baseURL: env.BETTER_AUTH_URL,
+    basePath: "/api/auth",
+    trustedOrigins: [env.ALLOWED_ORIGIN],
     socialProviders: {
       google: {
         clientId: env.GOOGLE_CLIENT_ID,

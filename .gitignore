@@ -19,8 +19,10 @@ dist/
 Thumbs.db
 
 # Env
+.env
 *.local
 !.dev.vars.example
+!.env.example
 
 # Logs
 *.log

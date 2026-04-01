@@ -14,8 +14,9 @@
 - **Testing:** TDD is mandatory — Vitest, tests written before implementation, no exceptions
 - **Env vars:** `.dev.vars` for local (gitignored), `.dev.vars.example` committed as contract, Cloudflare secrets for remote
 - **Drizzle schema location:** `apps/api/src/db/schema.ts`
-- **Auth routes:** Mounted at `/api/auth/**` — Better Auth handles all sub-routes
+- **Auth routes:** Mounted at `/api/auth/*` with `basePath: "/api/auth"` — Better Auth handles all sub-routes. `baseURL` set via `BETTER_AUTH_URL` env var, `trustedOrigins` set via `ALLOWED_ORIGIN`. OAuth callback uses `window.location.origin` for correct frontend redirect. Requires `nodejs_compat` compatibility flag in wrangler.toml for AsyncLocalStorage support.
 - **Admin middleware:** `adminOnly` middleware in `apps/api/src/auth/middleware.ts` — validates session via Better Auth, sets `user` and `session` on Hono context
+- **Frontend route protection:** `/admin` route wrapped with `ProtectedRoute` component — redirects unauthenticated users to `/login`. Session checks use `session?.user` to avoid false positives from empty response objects.
 - **CI/CD secrets required:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` in GitHub Secrets
 - **pnpm version:** 9.15.4 via corepack
 

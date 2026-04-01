@@ -32,7 +32,7 @@ const app = new Hono<Env>()
   .get("/health", (c) => c.json({ status: "ok" }))
   .route("/api/admin", adminProjectRoutes)
   .route("/api", publicProjectRoutes)
-  .on(["POST", "GET"], "/api/auth/**", (c) => {
+  .on(["POST", "GET"], "/api/auth/*", (c) => {
     const auth = createAuth(c.env);
     return auth.handler(c.req.raw);
   });

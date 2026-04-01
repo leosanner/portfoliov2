@@ -3,6 +3,7 @@ import app from "../src/index";
 
 const env = {
   ALLOWED_ORIGIN: "http://localhost:5173",
+  BETTER_AUTH_URL: "http://localhost:8787",
   GOOGLE_CLIENT_ID: "test-client-id",
   GOOGLE_CLIENT_SECRET: "test-client-secret",
   BETTER_AUTH_SECRET: "test-secret-at-least-32-chars-long!!",
