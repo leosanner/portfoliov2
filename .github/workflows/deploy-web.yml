@@ -55,6 +55,8 @@ jobs:
 
       - name: Build Web
         run: pnpm build:web
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to Cloudflare Pages (preview)
         run: pnpm --filter @portfolio/web exec wrangler pages deploy dist --project-name portfolio-web
@@ -81,6 +83,8 @@ jobs:
 
       - name: Build Web
         run: pnpm build:web
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to Cloudflare Pages (production)
         run: pnpm --filter @portfolio/web exec wrangler pages deploy dist --project-name portfolio-web --branch main
