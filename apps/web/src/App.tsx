@@ -1,3 +1,4 @@
+// App router
 import { Route, Switch } from "wouter";
 import { HomePage } from "./pages/HomePage";
 import { ProjectPage } from "./pages/ProjectPage";
