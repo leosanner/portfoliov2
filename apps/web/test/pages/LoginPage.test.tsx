@@ -18,7 +18,6 @@ import { authClient } from "../../src/lib/auth";
 import { LoginPage } from "../../src/pages/LoginPage";
 
 const mockUseSession = vi.mocked(authClient.useSession);
-const mockSignInSocial = vi.mocked(authClient.signIn.social);
 
 function renderWithRouter(ui: ReactNode, path = "/login") {
   const { hook } = memoryLocation({ path, static: true });
@@ -42,18 +41,31 @@ describe("LoginPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("calls Google sign-in when button is clicked", async () => {
+  it("redirects to Google OAuth when button is clicked", async () => {
     const user = userEvent.setup();
-    mockSignInSocial.mockResolvedValue({} as never);
+    const setHref = vi.fn();
+    const originalLocation = window.location;
+    Object.defineProperty(window, "location", {
+      value: {
+        ...originalLocation,
+        set href(url: string) {
+          setHref(url);
+        },
+      },
+      writable: true,
+    });
 
     renderWithRouter(<LoginPage />);
 
     await user.click(
       screen.getByRole("button", { name: /sign in with google/i }),
     );
-    expect(mockSignInSocial).toHaveBeenCalledWith({
-      provider: "google",
-      callbackURL: `${window.location.origin}/admin`,
+
+    const expectedURL = `${import.meta.env.VITE_API_URL}/api/auth/signin/google?callbackURL=${encodeURIComponent(`${window.location.origin}/admin`)}`;
+    expect(setHref).toHaveBeenCalledWith(expectedURL);
+    Object.defineProperty(window, "location", {
+      value: originalLocation,
+      writable: true,
     });
   });
 
@@ -79,18 +91,5 @@ describe("LoginPage", () => {
     expect(
       screen.queryByRole("button", { name: /sign in/i }),
     ).not.toBeInTheDocument();
-  });
-
-  it("displays error message on sign-in failure", async () => {
-    const user = userEvent.setup();
-    mockSignInSocial.mockRejectedValue(new Error("Auth failed"));
-
-    renderWithRouter(<LoginPage />);
-
-    await user.click(
-      screen.getByRole("button", { name: /sign in with google/i }),
-    );
-
-    expect(await screen.findByText(/failed to sign in/i)).toBeInTheDocument();
   });
 });
