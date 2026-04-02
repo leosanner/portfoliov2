@@ -12,8 +12,11 @@ export function LoginPage() {
     return <Redirect to="/admin" />;
   }
 
-  function handleGoogleSignIn() {
-    window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/signin/google?callbackURL=${encodeURIComponent(`${window.location.origin}/admin`)}`;
+  async function handleGoogleSignIn() {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/admin",
+    });
   }
 
   return (

@@ -18,6 +18,7 @@ import { authClient } from "../../src/lib/auth";
 import { LoginPage } from "../../src/pages/LoginPage";
 
 const mockUseSession = vi.mocked(authClient.useSession);
+const mockSignInSocial = vi.mocked(authClient.signIn.social);
 
 function renderWithRouter(ui: ReactNode, path = "/login") {
   const { hook } = memoryLocation({ path, static: true });
@@ -41,31 +42,18 @@ describe("LoginPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("redirects to Google OAuth when button is clicked", async () => {
+  it("calls Google sign-in when button is clicked", async () => {
     const user = userEvent.setup();
-    const setHref = vi.fn();
-    const originalLocation = window.location;
-    Object.defineProperty(window, "location", {
-      value: {
-        ...originalLocation,
-        set href(url: string) {
-          setHref(url);
-        },
-      },
-      writable: true,
-    });
+    mockSignInSocial.mockResolvedValue({} as never);
 
     renderWithRouter(<LoginPage />);
 
     await user.click(
       screen.getByRole("button", { name: /sign in with google/i }),
     );
-
-    const expectedURL = `${import.meta.env.VITE_API_URL}/api/auth/signin/google?callbackURL=${encodeURIComponent(`${window.location.origin}/admin`)}`;
-    expect(setHref).toHaveBeenCalledWith(expectedURL);
-    Object.defineProperty(window, "location", {
-      value: originalLocation,
-      writable: true,
+    expect(mockSignInSocial).toHaveBeenCalledWith({
+      provider: "google",
+      callbackURL: "/admin",
     });
   });
 
