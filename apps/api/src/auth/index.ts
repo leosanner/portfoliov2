@@ -30,12 +30,13 @@ export function createAuth(env: Env["Bindings"]) {
     },
     hooks: {
       before: async (context) => {
-        if (context.body?.callbackURL?.startsWith("/")) {
+        const body = context.body as { callbackURL?: string } | undefined;
+        if (body?.callbackURL?.startsWith("/")) {
           return {
             context: {
               body: {
-                ...context.body,
-                callbackURL: `${env.ALLOWED_ORIGIN}${context.body.callbackURL}`,
+                ...body,
+                callbackURL: `${env.ALLOWED_ORIGIN}${body.callbackURL}`,
               },
             },
           };
