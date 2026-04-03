@@ -28,6 +28,21 @@ export function createAuth(env: Env["Bindings"]) {
         secure: true,
       },
     },
+    hooks: {
+      before: async (context) => {
+        const body = context.body as { callbackURL?: string } | undefined;
+        if (body?.callbackURL?.startsWith("/")) {
+          return {
+            context: {
+              body: {
+                ...body,
+                callbackURL: `${env.ALLOWED_ORIGIN}${body.callbackURL}`,
+              },
+            },
+          };
+        }
+      },
+    },
     session: {
       cookieCache: {
         enabled: true,
