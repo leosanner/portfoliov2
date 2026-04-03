@@ -26,7 +26,6 @@ export function createAuth(env: Env["Bindings"]) {
       defaultCookieAttributes: {
         sameSite: "none",
         secure: true,
-        partitioned: true,
       },
     },
     session: {
