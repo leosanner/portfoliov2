@@ -22,6 +22,13 @@ export function createAuth(env: Env["Bindings"]) {
         clientSecret: env.GOOGLE_CLIENT_SECRET,
       },
     },
+    advanced: {
+      defaultCookieAttributes: {
+        sameSite: "none",
+        secure: true,
+        partitioned: true,
+      },
+    },
     session: {
       cookieCache: {
         enabled: true,
