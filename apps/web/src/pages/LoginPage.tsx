@@ -15,7 +15,7 @@ export function LoginPage() {
   async function handleGoogleSignIn() {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/admin",
+      callbackURL: `${window.location.origin}/admin`,
     });
   }
 
