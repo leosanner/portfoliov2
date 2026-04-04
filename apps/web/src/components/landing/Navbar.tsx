@@ -1,3 +1,5 @@
+import { CartoonButton } from "./CartoonButton";
+
 const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
@@ -24,12 +26,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
-          href="#contact"
-          className="rounded-full bg-primary-container px-5 py-2 font-label text-sm font-bold text-on-surface transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(26,154,90,0.35)]"
-        >
-          Get in touch
-        </a>
+        <CartoonButton label="Get in touch" href="#contact" />
       </div>
     </nav>
   );

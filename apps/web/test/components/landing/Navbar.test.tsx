@@ -29,11 +29,18 @@ describe("Navbar", () => {
     );
   });
 
-  it("has a CTA button", () => {
+  it("has a CTA button using CartoonButton", () => {
     render(<Navbar />);
-    expect(
-      screen.getByRole("link", { name: /get in touch/i }),
-    ).toBeInTheDocument();
+    const cta = screen.getByRole("link", { name: /get in touch/i });
+    expect(cta).toBeInTheDocument();
+    expect(cta).toHaveClass("bg-primary-container", "border-2", "rounded-full");
+  });
+
+  it("CTA has hover animation classes", () => {
+    render(<Navbar />);
+    const cta = screen.getByRole("link", { name: /get in touch/i });
+    expect(cta).toHaveClass("transition-all");
+    expect(cta.className).toContain("hover:-translate-y-1");
   });
 
   describe("hover animations", () => {
@@ -47,14 +54,6 @@ describe("Navbar", () => {
         "ease-out",
       );
       expect(link).toHaveClass("nav-link-underline");
-    });
-
-    it("CTA button has scale, lift and glow hover classes", () => {
-      render(<Navbar />);
-      const cta = screen.getByRole("link", { name: /get in touch/i });
-      expect(cta).toHaveClass("transition-all", "duration-300", "ease-out");
-      expect(cta.className).toContain("hover:scale-105");
-      expect(cta.className).toContain("hover:-translate-y-0.5");
     });
 
     it("logo text has tracking and color hover transition", () => {

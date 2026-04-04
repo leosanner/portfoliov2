@@ -1,3 +1,5 @@
+import { CartoonButton } from "./CartoonButton";
+
 export function Hero() {
   return (
     <section
@@ -20,18 +22,8 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="#projects"
-            className="rounded-full bg-primary-container px-7 py-3 font-label text-sm font-bold text-on-surface transition-all duration-300 ease-out hover:scale-[1.06] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(26,154,90,0.4)]"
-          >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-outline-variant px-7 py-3 font-label text-sm font-bold text-on-surface-variant transition-all duration-300 ease-out hover:border-primary hover:text-primary hover:bg-primary-container/10 hover:shadow-[0_0_15px_rgba(26,154,90,0.2)]"
-          >
-            Contact Me
-          </a>
+          <CartoonButton label="View Projects" href="#projects" />
+          <CartoonButton label="Contact Me" href="#contact" variant="outline" />
         </div>
       </div>
     </section>

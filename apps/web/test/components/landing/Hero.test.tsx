@@ -31,21 +31,26 @@ describe("Hero", () => {
     );
   });
 
-  describe("hover animations", () => {
-    it("primary CTA has scale, lift and glow hover classes", () => {
-      render(<Hero />);
-      const cta = screen.getByRole("link", { name: /view projects/i });
-      expect(cta).toHaveClass("transition-all", "duration-300", "ease-out");
-      expect(cta.className).toContain("hover:scale-[1.06]");
-      expect(cta.className).toContain("hover:-translate-y-1");
-    });
+  it("primary CTA uses CartoonButton with primary variant", () => {
+    render(<Hero />);
+    const cta = screen.getByRole("link", { name: /view projects/i });
+    expect(cta).toHaveClass("bg-primary-container", "border-2", "rounded-full");
+  });
 
-    it("secondary CTA has fill, border glow and shadow hover classes", () => {
-      render(<Hero />);
-      const cta = screen.getByRole("link", { name: /contact me/i });
-      expect(cta).toHaveClass("transition-all", "duration-300", "ease-out");
-      expect(cta.className).toContain("hover:border-primary");
-      expect(cta.className).toContain("hover:bg-primary-container/10");
-    });
+  it("secondary CTA uses CartoonButton with outline variant", () => {
+    render(<Hero />);
+    const cta = screen.getByRole("link", { name: /contact me/i });
+    expect(cta.className).toContain("bg-surface-container");
+    expect(cta).toHaveClass("border-2", "rounded-full");
+  });
+
+  it("CTAs have hover animation classes", () => {
+    render(<Hero />);
+    const primary = screen.getByRole("link", { name: /view projects/i });
+    const secondary = screen.getByRole("link", { name: /contact me/i });
+    expect(primary).toHaveClass("transition-all");
+    expect(primary.className).toContain("hover:-translate-y-1");
+    expect(secondary).toHaveClass("transition-all");
+    expect(secondary.className).toContain("hover:-translate-y-1");
   });
 });
