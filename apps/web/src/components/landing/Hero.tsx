@@ -1,17 +1,18 @@
 import { CartoonButton } from "./CartoonButton";
+import { FloatingPaths } from "./FloatingPaths";
 
 export function Hero() {
   return (
     <section
       id="hero"
       className="relative overflow-hidden pt-24 pb-20 lg:pt-40 lg:pb-32"
-      style={{
-        backgroundImage:
-          "radial-gradient(circle at 1px 1px, rgba(168,240,200,0.04) 1px, transparent 0)",
-        backgroundSize: "40px 40px",
-      }}
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="absolute inset-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <h1 className="font-headline text-5xl leading-[1.08] font-extrabold tracking-tight text-on-surface lg:text-7xl">
           Building Digital <span className="text-primary">Experiences</span>
         </h1>
