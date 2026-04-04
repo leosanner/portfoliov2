@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors — MD3-inspired dark palette */
+  --color-background: #131313;
+  --color-surface: #131313;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-surface-bright: #3a3939;
+  --color-primary: #d0bcff;
+  --color-primary-container: #7a3ff1;
+  --color-secondary: #4edf9f;
+  --color-secondary-container: #00b479;
+  --color-tertiary: #ffb77d;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #cbc3d8;
+  --color-outline: #958da1;
+  --color-outline-variant: #4a4455;
+
+  /* Fonts */
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
