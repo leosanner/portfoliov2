@@ -24,9 +24,9 @@ The landing page is a single-scroll page composed of 7 sections in this order:
 ### 2. Hero
 
 - Full-width, generous vertical padding (`py-20 lg:py-32`)
-- Large headline (Manrope extrabold, `text-5xl lg:text-7xl`) with gradient text (purple → green) on key word
+- Large headline (Manrope extrabold, `text-5xl lg:text-7xl`) with solid accent color (mint green) on key word
 - Subtitle paragraph (Inter, `text-lg lg:text-xl`, muted color)
-- Two CTA buttons: primary gradient + secondary outline
+- Two CTA buttons: primary solid green + secondary outline
 - Clean layout — text only, no terminal mock or side imagery
 - Grid pattern background (subtle dot grid via `radial-gradient`)
 
@@ -80,27 +80,27 @@ The landing page is a single-scroll page composed of 7 sections in this order:
 
 ## Color Palette
 
-Material Design 3 inspired, dark mode default.
+Green-based dark palette with solid colors (no gradients).
 
-| Token                         | Value     | Usage                            |
-| ----------------------------- | --------- | -------------------------------- |
-| `--background`                | `#131313` | Page background                  |
-| `--surface`                   | `#131313` | Same as background               |
-| `--surface-container-lowest`  | `#0e0e0e` | Footer, deep containers          |
-| `--surface-container-low`     | `#1c1b1b` | Cards default                    |
-| `--surface-container`         | `#201f1f` | Mid-level containers             |
-| `--surface-container-high`    | `#2a2a2a` | Cards hover, buttons             |
-| `--surface-container-highest` | `#353534` | Elevated elements                |
-| `--surface-bright`            | `#3a3939` | Interactive surfaces             |
-| `--primary`                   | `#d0bcff` | Primary text accents             |
-| `--primary-container`         | `#7a3ff1` | Gradient start, CTA backgrounds  |
-| `--secondary`                 | `#4edf9f` | Green accents, status indicators |
-| `--secondary-container`       | `#00b479` | Green container                  |
-| `--tertiary`                  | `#ffb77d` | Orange accents                   |
-| `--on-surface`                | `#e5e2e1` | Primary text                     |
-| `--on-surface-variant`        | `#cbc3d8` | Secondary/muted text             |
-| `--outline`                   | `#958da1` | Borders                          |
-| `--outline-variant`           | `#4a4455` | Subtle borders                   |
+| Token                         | Value     | Usage                       |
+| ----------------------------- | --------- | --------------------------- |
+| `--background`                | `#101210` | Page background             |
+| `--surface`                   | `#101210` | Same as background          |
+| `--surface-container-lowest`  | `#0b0d0b` | Footer, deep containers     |
+| `--surface-container-low`     | `#1a1e1a` | Cards default               |
+| `--surface-container`         | `#1e221e` | Mid-level containers        |
+| `--surface-container-high`    | `#282c28` | Cards hover, buttons        |
+| `--surface-container-highest` | `#333733` | Elevated elements           |
+| `--surface-bright`            | `#383c38` | Interactive surfaces        |
+| `--primary`                   | `#a8f0c8` | Primary text accents (mint) |
+| `--primary-container`         | `#1a9a5a` | Solid CTA backgrounds       |
+| `--secondary`                 | `#e8c170` | Warm gold accents           |
+| `--secondary-container`       | `#b89530` | Gold container              |
+| `--tertiary`                  | `#7ecbf5` | Cool blue accents           |
+| `--on-surface`                | `#e2e5e2` | Primary text                |
+| `--on-surface-variant`        | `#b8c9be` | Secondary/muted text        |
+| `--outline`                   | `#7d9a87` | Borders                     |
+| `--outline-variant`           | `#3a4f40` | Subtle borders              |
 
 ---
 
@@ -130,7 +130,7 @@ Material Design 3 inspired, dark mode default.
 ```css
 background-image: radial-gradient(
   circle at 1px 1px,
-  rgba(203, 195, 216, 0.05) 1px,
+  rgba(168, 240, 200, 0.04) 1px,
   transparent 0
 );
 background-size: 40px 40px;
@@ -141,8 +141,8 @@ Applied to `<main>` wrapper.
 ### Glass Edge
 
 ```css
-border-top: 1px solid rgba(203, 195, 216, 0.1);
-border-left: 1px solid rgba(203, 195, 216, 0.1);
+border-top: 1px solid rgba(168, 240, 200, 0.08);
+border-left: 1px solid rgba(168, 240, 200, 0.08);
 ```
 
 Applied to cards and elevated containers.
@@ -170,17 +170,9 @@ Applied to contact card and featured containers.
 
 Content duplicated for seamless loop. CSS-only, no JS.
 
-### Gradient Text
+### Accent Text
 
-```css
-background: linear-gradient(
-  to right,
-  var(--primary-container),
-  var(--secondary)
-);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-```
+Solid color accent using `text-primary` (#a8f0c8) — no gradients.
 
 ---
 

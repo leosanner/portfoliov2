@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — MD3-inspired dark palette */
-  --color-background: #131313;
-  --color-surface: #131313;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-container: #201f1f;
-  --color-surface-container-high: #2a2a2a;
-  --color-surface-container-highest: #353534;
-  --color-surface-bright: #3a3939;
-  --color-primary: #d0bcff;
-  --color-primary-container: #7a3ff1;
-  --color-secondary: #4edf9f;
-  --color-secondary-container: #00b479;
-  --color-tertiary: #ffb77d;
-  --color-on-surface: #e5e2e1;
-  --color-on-surface-variant: #cbc3d8;
-  --color-outline: #958da1;
-  --color-outline-variant: #4a4455;
+  /* Colors — Green-based dark palette */
+  --color-background: #101210;
+  --color-surface: #101210;
+  --color-surface-container-lowest: #0b0d0b;
+  --color-surface-container-low: #1a1e1a;
+  --color-surface-container: #1e221e;
+  --color-surface-container-high: #282c28;
+  --color-surface-container-highest: #333733;
+  --color-surface-bright: #383c38;
+  --color-primary: #a8f0c8;
+  --color-primary-container: #1a9a5a;
+  --color-secondary: #e8c170;
+  --color-secondary-container: #b89530;
+  --color-tertiary: #7ecbf5;
+  --color-on-surface: #e2e5e2;
+  --color-on-surface-variant: #b8c9be;
+  --color-outline: #7d9a87;
+  --color-outline-variant: #3a4f40;
 
   /* Fonts */
   --font-headline: "Manrope", sans-serif;
