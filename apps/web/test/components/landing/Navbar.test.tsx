@@ -15,38 +15,47 @@ describe("Navbar", () => {
 
   it("contains anchor links for sections", () => {
     render(<Navbar />);
-    expect(screen.getByRole("link", { name: /projects/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /projetos/i })).toHaveAttribute(
       "href",
       "#projects",
     );
-    expect(screen.getByRole("link", { name: /about/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /sobre/i })).toHaveAttribute(
       "href",
       "#about",
     );
-    expect(screen.getByRole("link", { name: /contact/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /contato/i })).toHaveAttribute(
       "href",
       "#contact",
     );
   });
 
-  it("has a CTA button using CartoonButton", () => {
+  it("has a CTA button with contact text", () => {
     render(<Navbar />);
-    const cta = screen.getByRole("link", { name: /get in touch/i });
+    const cta = screen.getByRole("button", { name: /fale comigo/i });
     expect(cta).toBeInTheDocument();
     expect(cta).toHaveClass("bg-primary-container", "border-2", "rounded-full");
   });
 
-  it("CTA has hover animation classes", () => {
+  it("shows contact social links", () => {
     render(<Navbar />);
-    const cta = screen.getByRole("link", { name: /get in touch/i });
-    expect(cta).toHaveClass("transition-all");
-    expect(cta.className).toContain("hover:-translate-y-1");
+    expect(screen.getByRole("link", { name: /email/i })).toHaveAttribute(
+      "href",
+      "mailto:leosanner.dev@gmail.com",
+    );
+    expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute(
+      "href",
+      "https://linkedin.com/in/leosanner",
+    );
+    expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute(
+      "href",
+      "https://github.com/leosanner",
+    );
   });
 
   describe("hover animations", () => {
     it("nav links have transition and underline animation classes", () => {
       render(<Navbar />);
-      const link = screen.getByRole("link", { name: /projects/i });
+      const link = screen.getByRole("link", { name: /projetos/i });
       expect(link).toHaveClass(
         "relative",
         "transition-all",

@@ -11,17 +11,17 @@ describe("HomePage", () => {
   it("renders the hero heading", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      /building digital experiences/i,
+      /construindo experiências/i,
     );
   });
 
   it("renders the hero CTA links", () => {
     render(<HomePage />);
     expect(
-      screen.getByRole("link", { name: /view projects/i }),
+      screen.getByRole("link", { name: /ver projetos/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /contact me/i }),
+      screen.getByRole("link", { name: /fale comigo/i }),
     ).toBeInTheDocument();
   });
 });

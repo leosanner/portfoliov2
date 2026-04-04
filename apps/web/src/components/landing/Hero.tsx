@@ -5,26 +5,25 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pt-24 pb-20 lg:pt-40 lg:pb-32"
+      className="relative flex min-h-screen items-center overflow-hidden"
     >
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 text-center">
         <h1 className="font-headline text-5xl leading-[1.08] font-extrabold tracking-tight text-on-surface lg:text-7xl">
-          Building Digital <span className="text-primary">Experiences</span>
+          Construindo <span className="text-primary">experiências</span>
         </h1>
 
-        <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant lg:text-xl">
-          Full-stack developer crafting performant, elegant web applications on
-          the modern cloud.
-        </p>
-
-        <div className="mt-10 flex flex-wrap gap-4">
-          <CartoonButton label="View Projects" href="#projects" />
-          <CartoonButton label="Contact Me" href="#contact" variant="outline" />
+        <div className="mt-16 flex flex-wrap justify-center gap-4">
+          <CartoonButton label="Ver Projetos" href="#projects" />
+          <CartoonButton
+            label="Fale Comigo"
+            href="#contact"
+            variant="outline"
+          />
         </div>
       </div>
     </section>

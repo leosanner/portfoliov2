@@ -20,7 +20,7 @@ describe("App", () => {
       </QueryClientProvider>,
     );
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
-      /building digital experiences/i,
+      /construindo experiências/i,
     );
   });
 });

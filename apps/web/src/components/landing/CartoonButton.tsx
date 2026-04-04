@@ -14,7 +14,7 @@ export function CartoonButton({
   onClick,
 }: CartoonButtonProps) {
   const base =
-    "relative inline-block rounded-full border-2 px-7 py-3 font-label text-sm font-bold overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0 active:shadow-none";
+    "relative inline-block rounded-full border-2 px-9 py-4 font-label text-base font-bold overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0 active:shadow-none";
 
   const variants = {
     primary:

@@ -1,9 +1,9 @@
-import { CartoonButton } from "./CartoonButton";
+import { ContactButton } from "../ui/contact-button";
 
 const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projetos", href: "#projects" },
+  { label: "Sobre", href: "#about" },
+  { label: "Contato", href: "#contact" },
 ] as const;
 
 export function Navbar() {
@@ -26,7 +26,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <CartoonButton label="Get in touch" href="#contact" />
+        <ContactButton />
       </div>
     </nav>
   );
