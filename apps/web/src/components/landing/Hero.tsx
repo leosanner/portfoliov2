@@ -7,7 +7,7 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-x-0 top-[35%] bottom-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>

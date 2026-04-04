@@ -45,6 +45,25 @@
   transform: scaleX(1);
 }
 
+/* Logo color fill animation */
+.logo-fill {
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 50%,
+    var(--color-on-surface) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 300ms ease-out;
+}
+
+.logo-fill:hover {
+  background-position: left;
+}
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,

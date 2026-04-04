@@ -65,12 +65,10 @@ describe("Navbar", () => {
       expect(link).toHaveClass("nav-link-underline");
     });
 
-    it("logo text has tracking and color hover transition", () => {
+    it("logo text has color fill animation class", () => {
       render(<Navbar />);
       const logo = screen.getByText("Leonardo Sanner");
-      expect(logo).toHaveClass("transition-all", "duration-300", "ease-out");
-      expect(logo.className).toContain("hover:tracking-normal");
-      expect(logo.className).toContain("hover:text-primary");
+      expect(logo).toHaveClass("logo-fill");
     });
   });
 });

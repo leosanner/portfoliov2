@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <span className="font-headline text-lg font-bold tracking-tight text-on-surface transition-all duration-300 ease-out cursor-pointer hover:tracking-normal hover:text-primary">
+        <span className="logo-fill font-headline text-lg font-bold tracking-tight cursor-pointer">
           Leonardo Sanner
         </span>
 
