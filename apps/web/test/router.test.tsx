@@ -61,7 +61,7 @@ describe("Router", () => {
 
   it("renders home page at /", async () => {
     renderAtPath("/");
-    expect(await screen.findByText("Portfolio")).toBeInTheDocument();
+    expect(await screen.findByText(/building digital/i)).toBeInTheDocument();
   });
 
   it("renders project page at /projects/:slug", () => {

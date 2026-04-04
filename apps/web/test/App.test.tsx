@@ -1,18 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { memoryLocation } from "wouter/memory-location";
 import { Router } from "wouter";
-
-vi.mock("../src/lib/api", () => ({
-  api: {
-    api: {
-      projects: {
-        $get: vi.fn().mockResolvedValue(Response.json({ projects: [] })),
-      },
-    },
-  },
-}));
 
 import { App } from "../src/App";
 
@@ -30,7 +20,7 @@ describe("App", () => {
       </QueryClientProvider>,
     );
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
-      "Portfolio",
+      /building digital experiences/i,
     );
   });
 });
