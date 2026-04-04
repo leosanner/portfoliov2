@@ -35,4 +35,34 @@ describe("Navbar", () => {
       screen.getByRole("link", { name: /get in touch/i }),
     ).toBeInTheDocument();
   });
+
+  describe("hover animations", () => {
+    it("nav links have transition and underline animation classes", () => {
+      render(<Navbar />);
+      const link = screen.getByRole("link", { name: /projects/i });
+      expect(link).toHaveClass(
+        "relative",
+        "transition-all",
+        "duration-300",
+        "ease-out",
+      );
+      expect(link).toHaveClass("nav-link-underline");
+    });
+
+    it("CTA button has scale, lift and glow hover classes", () => {
+      render(<Navbar />);
+      const cta = screen.getByRole("link", { name: /get in touch/i });
+      expect(cta).toHaveClass("transition-all", "duration-300", "ease-out");
+      expect(cta.className).toContain("hover:scale-105");
+      expect(cta.className).toContain("hover:-translate-y-0.5");
+    });
+
+    it("logo text has tracking and color hover transition", () => {
+      render(<Navbar />);
+      const logo = screen.getByText("Leonardo Sanner");
+      expect(logo).toHaveClass("transition-all", "duration-300", "ease-out");
+      expect(logo.className).toContain("hover:tracking-normal");
+      expect(logo.className).toContain("hover:text-primary");
+    });
+  });
 });
