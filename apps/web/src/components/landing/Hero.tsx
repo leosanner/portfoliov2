@@ -1,0 +1,42 @@
+export function Hero() {
+  return (
+    <section
+      id="hero"
+      className="relative overflow-hidden pt-24 pb-20 lg:pt-40 lg:pb-32"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 1px 1px, rgba(203,195,216,0.05) 1px, transparent 0)",
+        backgroundSize: "40px 40px",
+      }}
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        <h1 className="font-headline text-5xl leading-[1.08] font-extrabold tracking-tight text-on-surface lg:text-7xl">
+          Building Digital{" "}
+          <span className="bg-gradient-to-r from-primary-container to-secondary bg-clip-text text-transparent">
+            Experiences
+          </span>
+        </h1>
+
+        <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant lg:text-xl">
+          Full-stack developer crafting performant, elegant web applications on
+          the modern cloud.
+        </p>
+
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a
+            href="#projects"
+            className="rounded-full bg-primary-container px-7 py-3 font-label text-sm font-bold text-on-surface transition-colors hover:bg-primary-container/80"
+          >
+            View Projects
+          </a>
+          <a
+            href="#contact"
+            className="rounded-full border border-outline-variant px-7 py-3 font-label text-sm font-bold text-on-surface-variant transition-colors hover:border-primary hover:text-primary"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
