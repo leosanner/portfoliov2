@@ -57,15 +57,15 @@ export function FeaturedProjects() {
   return (
     <section
       id="projects"
-      className="snap-section relative flex flex-col justify-center px-6"
+      className="snap-section relative justify-center px-6 pt-20 md:pt-0"
     >
       {/* Subtle top divider */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent" />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl py-16 md:py-0">
         {/* Section header */}
         <motion.div
-          className="mb-16 text-center"
+          className="mb-8 text-center lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -85,7 +85,7 @@ export function FeaturedProjects() {
 
         {/* Cards grid */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-8"
+          className="flex flex-wrap items-center justify-center gap-5 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

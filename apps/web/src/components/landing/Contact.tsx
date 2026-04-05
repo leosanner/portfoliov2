@@ -59,11 +59,11 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="snap-section relative flex flex-col items-center justify-center overflow-hidden"
+      className="snap-section relative items-center justify-center pt-20 md:pt-0"
     >
       {/* Radial glow behind heading */}
       <div
-        className="pointer-events-none absolute top-1/3 left-1/2 h-100 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.04]"
+        className="pointer-events-none absolute top-1/3 left-1/2 h-100 w-150 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full opacity-[0.04]"
         style={{
           background:
             "radial-gradient(circle, var(--color-primary), transparent 60%)",
@@ -81,7 +81,7 @@ export function Contact() {
             Contato
           </span>
 
-          <h2 className="font-headline mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight text-on-surface lg:text-6xl">
+          <h2 className="font-headline mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-on-surface sm:text-4xl lg:text-6xl">
             Vamos construir algo <span className="text-primary">juntos</span>?
           </h2>
 
@@ -92,7 +92,7 @@ export function Contact() {
 
         {/* Contact links as large interactive rows */}
         <motion.div
-          className="mt-14 flex flex-col gap-3"
+          className="mt-8 flex flex-col gap-3 sm:mt-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -138,7 +138,7 @@ export function Contact() {
       </div>
 
       {/* Footer line */}
-      <div className="absolute bottom-6 left-0 right-0 text-center">
+      <div className="mt-auto py-6 text-center">
         <span className="font-label text-[11px] tracking-widest text-outline/50">
           Leonardo Sanner &copy; {new Date().getFullYear()}
         </span>
