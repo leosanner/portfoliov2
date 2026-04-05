@@ -78,8 +78,8 @@ export function FeaturedProjects() {
             O que eu tenho construído
           </h2>
           <p className="mt-4 text-on-surface-variant max-w-lg mx-auto">
-            Uma seleção dos projetos mais recentes e relevantes do meu
-            portfólio.
+            Projetos que refletem meu processo de transformar problemas em
+            soluções digitais claras e eficientes.
           </p>
         </motion.div>
 
