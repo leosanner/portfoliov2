@@ -41,7 +41,12 @@ export function Hero() {
           </motion.h1>
         </LayoutGroup>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4">
+        <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-on-surface-variant lg:text-lg">
+          Aplicações web, APIs e automações sob medida para transformar ideias
+          em produtos digitais rápidos, sólidos e prontos para evoluir.
+        </p>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
           <CartoonButton label="Ver Projetos" href="#projects" />
           <CartoonButton
             label="Fale Comigo"
