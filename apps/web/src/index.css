@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors — Green-based dark palette */
+  --color-background: #101210;
+  --color-surface: #101210;
+  --color-surface-container-lowest: #0b0d0b;
+  --color-surface-container-low: #1a1e1a;
+  --color-surface-container: #1e221e;
+  --color-surface-container-high: #282c28;
+  --color-surface-container-highest: #333733;
+  --color-surface-bright: #383c38;
+  --color-primary: #27f576;
+  --color-primary-container: #1bc45e;
+  --color-secondary: #e8c170;
+  --color-secondary-container: #b89530;
+  --color-tertiary: #7ecbf5;
+  --color-on-surface: #e2e5e2;
+  --color-on-surface-variant: #b8c9be;
+  --color-outline: #7d9a87;
+  --color-outline-variant: #3a4f40;
+
+  /* Fonts */
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+/* Nav link underline reveal animation */
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease-out;
+}
+
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Logo color fill animation */
+.logo-fill {
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 50%,
+    var(--color-on-surface) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 300ms ease-out;
+}
+
+.logo-fill:hover {
+  background-position: left;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

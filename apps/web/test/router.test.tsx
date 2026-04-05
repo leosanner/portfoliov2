@@ -61,7 +61,7 @@ describe("Router", () => {
 
   it("renders home page at /", async () => {
     renderAtPath("/");
-    expect(await screen.findByText("Portfolio")).toBeInTheDocument();
+    expect(await screen.findByText(/construindo/i)).toBeInTheDocument();
   });
 
   it("renders project page at /projects/:slug", () => {
@@ -86,6 +86,6 @@ describe("Router", () => {
 
   it("renders not found for unknown routes", () => {
     renderAtPath("/unknown-route");
-    expect(screen.getByText(/not found/i)).toBeInTheDocument();
+    expect(screen.getByText(/página não encontrada/i)).toBeInTheDocument();
   });
 });
