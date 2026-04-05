@@ -33,7 +33,7 @@ describe("Navbar", () => {
     render(<Navbar />);
     const cta = screen.getByRole("button", { name: /fale comigo/i });
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveClass("bg-primary-container", "border-2", "rounded-full");
+    expect(cta).toHaveClass("bg-primary", "border-2", "rounded-full");
   });
 
   it("shows contact social links", () => {

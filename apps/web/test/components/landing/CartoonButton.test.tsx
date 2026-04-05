@@ -26,7 +26,7 @@ describe("CartoonButton", () => {
   it("applies primary variant styles by default", () => {
     render(<CartoonButton label="Primary" href="#x" />);
     const el = screen.getByRole("link", { name: /primary/i });
-    expect(el).toHaveClass("bg-primary-container", "border-2");
+    expect(el).toHaveClass("bg-primary", "border-2");
   });
 
   it("applies outline variant styles", () => {

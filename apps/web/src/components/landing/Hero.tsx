@@ -1,5 +1,7 @@
+import { LayoutGroup, motion } from "framer-motion";
 import { CartoonButton } from "./CartoonButton";
 import { FloatingPaths } from "./FloatingPaths";
+import { TextRotate } from "../ui/text-rotate";
 
 export function Hero() {
   return (
@@ -13,9 +15,31 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 text-center">
-        <h1 className="font-headline text-5xl leading-[1.08] font-extrabold tracking-tight text-on-surface lg:text-7xl">
-          Construindo <span className="text-primary">experiências</span>
-        </h1>
+        <LayoutGroup>
+          <motion.h1
+            className="font-headline text-5xl leading-[1.08] font-extrabold tracking-tight text-on-surface lg:text-7xl flex flex-wrap items-center justify-center gap-x-4"
+            layout
+          >
+            <motion.span
+              layout
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            >
+              Construindo
+            </motion.span>
+            <TextRotate
+              texts={["experiências", "inovação", "soluções", "impacto"]}
+              mainClassName="text-background px-2 lg:px-3 bg-primary overflow-hidden py-0.5 lg:py-1 justify-center rounded-md"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 lg:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2500}
+            />
+          </motion.h1>
+        </LayoutGroup>
 
         <div className="mt-16 flex flex-wrap justify-center gap-4">
           <CartoonButton label="Ver Projetos" href="#projects" />

@@ -19,8 +19,7 @@ describe("App", () => {
         </Router>
       </QueryClientProvider>,
     );
-    expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
-      /construindo experiências/i,
-    );
+    const heading = await screen.findByRole("heading", { level: 1 });
+    expect(heading.textContent).toMatch(/construindo/i);
   });
 });

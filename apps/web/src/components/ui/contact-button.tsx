@@ -64,7 +64,7 @@ export function ContactButton() {
         type="button"
         className={cn(
           "relative flex h-10 items-center justify-center rounded-full border-2 px-7",
-          "bg-primary-container border-primary text-background",
+          "bg-primary border-primary text-background",
           "font-label text-sm font-bold",
           "transition-all duration-300",
           isHovered ? "opacity-0" : "opacity-100",

@@ -10,8 +10,8 @@ describe("HomePage", () => {
 
   it("renders the hero heading", () => {
     render(<HomePage />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      /construindo experiências/i,
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(
+      /construindo/i,
     );
   });
 
