@@ -22,8 +22,22 @@
 
   /* Fonts */
   --font-headline: "Manrope", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-body: "DM Sans", sans-serif;
   --font-label: "Space Grotesk", sans-serif;
+}
+
+/* Full-viewport scroll-snap container */
+.snap-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Nav link underline reveal animation */
