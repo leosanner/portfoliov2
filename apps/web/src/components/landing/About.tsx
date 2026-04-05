@@ -27,12 +27,12 @@ export function About() {
   return (
     <section
       id="about"
-      className="snap-section relative flex items-center overflow-hidden"
+      className="snap-section relative items-center justify-center overflow-x-hidden pt-20 md:pt-0"
     >
       {/* Diagonal accent line */}
       <div className="pointer-events-none absolute -left-20 top-1/4 h-[1px] w-[60vw] rotate-[-8deg] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-6 py-16 md:py-0 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
         {/* Left — Statement */}
         <motion.div
           className="flex flex-col justify-center"
@@ -45,7 +45,7 @@ export function About() {
             Sobre
           </span>
 
-          <h2 className="font-headline mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight text-on-surface lg:text-5xl">
+          <h2 className="font-headline mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-on-surface md:text-4xl lg:text-5xl">
             Engenheiro de software focado em{" "}
             <span className="text-primary">Cloudflare</span> e na{" "}
             <span className="text-secondary">edge</span>.

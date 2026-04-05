@@ -28,16 +28,32 @@
 
 /* Full-viewport scroll-snap container */
 .snap-container {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
+@media (min-width: 768px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+  }
+}
+
 .snap-section {
-  height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  /* Safe vertical centering — prevents content clipping when taller than viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .snap-section {
+    height: 100dvh;
+    min-height: auto;
+  }
 }
 
 /* Nav link underline reveal animation */
