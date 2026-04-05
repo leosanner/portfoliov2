@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="snap-section relative flex items-center overflow-hidden"
     >
       <div className="absolute inset-x-0 top-[35%] bottom-0">
         <FloatingPaths position={1} />

@@ -55,7 +55,10 @@ const cardVariants = {
 
 export function FeaturedProjects() {
   return (
-    <section id="projects" className="relative py-28 px-6">
+    <section
+      id="projects"
+      className="snap-section relative flex flex-col justify-center px-6"
+    >
       {/* Subtle top divider */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent" />
 
