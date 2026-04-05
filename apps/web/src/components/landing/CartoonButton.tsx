@@ -18,7 +18,7 @@ export function CartoonButton({
 
   const variants = {
     primary:
-      "bg-primary-container border-primary text-background hover:shadow-[0_4px_0_0_var(--color-primary)]",
+      "bg-primary border-primary text-background hover:shadow-[0_4px_0_0_var(--color-primary-container)]",
     outline:
       "bg-surface-container-high border-outline text-on-surface hover:shadow-[0_4px_0_0_var(--color-outline)] hover:text-primary hover:border-primary",
   };

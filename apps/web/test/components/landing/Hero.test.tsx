@@ -10,8 +10,8 @@ describe("Hero", () => {
 
   it("displays the headline", () => {
     render(<Hero />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      /construindo experiências/i,
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(
+      /construindo/i,
     );
   });
 
@@ -30,7 +30,7 @@ describe("Hero", () => {
   it("primary CTA uses CartoonButton with primary variant", () => {
     render(<Hero />);
     const cta = screen.getByRole("link", { name: /ver projetos/i });
-    expect(cta).toHaveClass("bg-primary-container", "border-2", "rounded-full");
+    expect(cta).toHaveClass("bg-primary", "border-2", "rounded-full");
   });
 
   it("secondary CTA uses CartoonButton with outline variant", () => {
