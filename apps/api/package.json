@@ -9,7 +9,7 @@
     }
   },
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "pnpm run db:migrate && pnpm run db:seed:admins && wrangler dev",
     "build": "wrangler deploy --dry-run --outdir dist",
     "test": "vitest run",
     "test:watch": "vitest",

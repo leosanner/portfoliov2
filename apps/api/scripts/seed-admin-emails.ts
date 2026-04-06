@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
-import type { Database } from "../src/db";
-import { adminEmails } from "../src/db/schema";
+import type { Database } from "../src/db/index.ts";
+import { adminEmails } from "../src/db/schema.ts";
 
 export interface SeedResult {
   inserted: number;
