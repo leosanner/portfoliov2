@@ -54,6 +54,11 @@ export const verification = sqliteTable("verification", {
   updatedAt: integer("updated_at", { mode: "timestamp" }),
 });
 
+export const adminEmails = sqliteTable("admin_emails", {
+  email: text("email").primaryKey(),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+});
+
 export const project = sqliteTable("project", {
   id: text("id").primaryKey(),
   title: text("title").notNull(),

@@ -30,6 +30,11 @@ const MIGRATIONS = [
     \`updated_at\` integer NOT NULL
   );`,
   `CREATE UNIQUE INDEX \`project_slug_unique\` ON \`project\` (\`slug\`);`,
+  // 0002 - admin_emails table
+  `CREATE TABLE \`admin_emails\` (
+    \`email\` text PRIMARY KEY NOT NULL,
+    \`created_at\` integer NOT NULL
+  );`,
 ];
 
 export function createTestDb() {

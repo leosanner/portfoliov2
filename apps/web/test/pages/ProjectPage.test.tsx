@@ -40,7 +40,7 @@ const fakeProject = {
   slug: "project-alpha",
   description: "A great project",
   content: "# Hello\n\nThis is **bold** text.",
-  youtubeUrl: "https://www.youtube.com/watch?v=abc123",
+  youtubeUrl: null as string | null,
   githubUrl: "https://github.com/test/alpha",
   techStack: ["TypeScript", "React"],
   published: true,
@@ -88,7 +88,14 @@ describe("ProjectPage", () => {
   });
 
   it("renders YouTube embed when youtubeUrl is present", async () => {
-    mockSlugGet.mockResolvedValue(Response.json({ project: fakeProject }));
+    mockSlugGet.mockResolvedValue(
+      Response.json({
+        project: {
+          ...fakeProject,
+          youtubeUrl: "https://www.youtube.com/watch?v=abc123",
+        },
+      }),
+    );
 
     render(<ProjectPage slug="project-alpha" />, {
       wrapper: createWrapper(),

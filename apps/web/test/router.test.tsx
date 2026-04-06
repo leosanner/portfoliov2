@@ -18,6 +18,13 @@ vi.mock("../src/lib/api", () => ({
         projects: {
           $get: vi.fn().mockResolvedValue(Response.json({ projects: [] })),
         },
+        me: {
+          $get: vi
+            .fn()
+            .mockResolvedValue(
+              Response.json({ ok: true, email: "admin@example.com" }),
+            ),
+        },
       },
     },
   },

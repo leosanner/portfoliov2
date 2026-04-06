@@ -15,6 +15,13 @@
       "when": 1774889262349,
       "tag": "0001_round_layla_miller",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1775505234327,
+      "tag": "0002_workable_barracuda",
+      "breakpoints": true
     }
   ]
 }

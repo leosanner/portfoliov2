@@ -3,6 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { createDb } from "../db";
 import * as schema from "../db/schema";
 import type { Env } from "../env";
+import { signupAllowlistBefore } from "./signup-hook";
 
 export function createAuth(env: Env["Bindings"]) {
   const db = createDb(env.DB);
@@ -16,6 +17,9 @@ export function createAuth(env: Env["Bindings"]) {
     baseURL: env.BETTER_AUTH_URL,
     basePath: "/api/auth",
     trustedOrigins: [env.ALLOWED_ORIGIN],
+    onAPIError: {
+      errorURL: `${env.ALLOWED_ORIGIN}/login?error=unauthorized`,
+    },
     socialProviders: {
       google: {
         clientId: env.GOOGLE_CLIENT_ID,
@@ -41,6 +45,13 @@ export function createAuth(env: Env["Bindings"]) {
             },
           };
         }
+      },
+    },
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => signupAllowlistBefore(db, user),
+        },
       },
     },
     session: {
