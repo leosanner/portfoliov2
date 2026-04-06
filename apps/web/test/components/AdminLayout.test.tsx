@@ -58,15 +58,45 @@ describe("AdminLayout", () => {
     expect(screen.queryByText("Admin content")).not.toBeInTheDocument();
   });
 
-  it("renders Dashboard nav link", () => {
+  it("renders Projects and Analytics nav links", () => {
     renderWithRouter(
       <AdminLayout>
         <p>Content</p>
       </AdminLayout>,
     );
 
-    const link = screen.getByRole("link", { name: /dashboard/i });
-    expect(link).toHaveAttribute("href", "/admin");
+    expect(screen.getByRole("link", { name: /all projects/i })).toHaveAttribute(
+      "href",
+      "/admin/projects",
+    );
+    expect(screen.getByRole("link", { name: /overview/i })).toHaveAttribute(
+      "href",
+      "/admin/analytics",
+    );
+  });
+
+  it("marks Projects link active when on /admin/projects", () => {
+    renderWithRouter(
+      <AdminLayout>
+        <p>Content</p>
+      </AdminLayout>,
+      "/admin/projects",
+    );
+
+    const link = screen.getByRole("link", { name: /all projects/i });
+    expect(link.className).toMatch(/bg-surface-container-high/);
+  });
+
+  it("marks Analytics link active when on /admin/analytics", () => {
+    renderWithRouter(
+      <AdminLayout>
+        <p>Content</p>
+      </AdminLayout>,
+      "/admin/analytics",
+    );
+
+    const link = screen.getByRole("link", { name: /overview/i });
+    expect(link.className).toMatch(/bg-surface-container-high/);
   });
 
   it("renders New Project nav link", () => {
