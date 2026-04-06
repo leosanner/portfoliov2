@@ -3,6 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { createDb } from "../db";
 import * as schema from "../db/schema";
 import type { Env } from "../env";
+import { signupAllowlistBefore } from "./signup-hook";
 
 export function createAuth(env: Env["Bindings"]) {
   const db = createDb(env.DB);
@@ -41,6 +42,13 @@ export function createAuth(env: Env["Bindings"]) {
             },
           };
         }
+      },
+    },
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => signupAllowlistBefore(db, user),
+        },
       },
     },
     session: {
