@@ -15,7 +15,8 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "wrangler d1 migrations apply DB --local",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:seed:admins": "node --experimental-strip-types --env-file=.dev.vars scripts/seed-admin-emails.ts"
   },
   "dependencies": {
     "@portfolio/shared": "workspace:^",

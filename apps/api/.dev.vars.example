@@ -3,3 +3,5 @@ BETTER_AUTH_URL=http://localhost:8787
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 BETTER_AUTH_SECRET=
+# Comma-separated bootstrap admin emails seeded into admin_emails by db:seed:admins
+ADMIN_BOOTSTRAP_EMAILS=
