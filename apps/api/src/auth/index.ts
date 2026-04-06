@@ -17,6 +17,9 @@ export function createAuth(env: Env["Bindings"]) {
     baseURL: env.BETTER_AUTH_URL,
     basePath: "/api/auth",
     trustedOrigins: [env.ALLOWED_ORIGIN],
+    onAPIError: {
+      errorURL: `${env.ALLOWED_ORIGIN}/login?error=unauthorized`,
+    },
     socialProviders: {
       google: {
         clientId: env.GOOGLE_CLIENT_ID,

@@ -68,6 +68,25 @@ describe("LoginPage", () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
 
+  it("shows an unauthorized message when ?error=unauthorized is present", () => {
+    const originalSearch = window.location.search;
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, search: "?error=unauthorized" },
+      writable: true,
+    });
+
+    renderWithRouter(<LoginPage />);
+
+    expect(
+      screen.getByText(/not authorized to access the admin area/i),
+    ).toBeInTheDocument();
+
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, search: originalSearch },
+      writable: true,
+    });
+  });
+
   it("redirects to /admin if user is already authenticated", () => {
     mockUseSession.mockReturnValue({
       data: { user: { id: "1", name: "Admin" }, session: {} },
