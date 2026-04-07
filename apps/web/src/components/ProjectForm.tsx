@@ -23,6 +23,14 @@ interface FormErrors {
   content?: string;
 }
 
+const fieldWrap = "flex flex-col gap-2";
+const labelClass =
+  "font-label text-[11px] font-medium uppercase tracking-[0.18em] text-on-surface-variant";
+const inputClass =
+  "w-full rounded-lg border border-outline-variant/40 bg-surface-container-low/60 px-4 py-2.5 font-body text-sm text-on-surface placeholder:text-on-surface-variant/50 transition-colors focus:border-primary/60 focus:bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20";
+const errorClass = "font-body text-xs text-danger";
+const hintClass = "font-body text-xs text-on-surface-variant/70";
+
 export function ProjectForm({
   mode,
   initialData,
@@ -77,8 +85,8 @@ export function ProjectForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="title" className="mb-1 block text-sm font-medium">
+      <div className={fieldWrap}>
+        <label htmlFor="title" className={labelClass}>
           Title
         </label>
         <input
@@ -86,15 +94,14 @@ export function ProjectForm({
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full rounded border border-gray-300 px-3 py-2"
+          className={inputClass}
+          placeholder="My amazing project"
         />
-        {errors.title && (
-          <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-        )}
+        {errors.title && <p className={errorClass}>{errors.title}</p>}
       </div>
 
-      <div>
-        <label htmlFor="description" className="mb-1 block text-sm font-medium">
+      <div className={fieldWrap}>
+        <label htmlFor="description" className={labelClass}>
           Description
         </label>
         <textarea
@@ -102,41 +109,46 @@ export function ProjectForm({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={3}
-          className="w-full rounded border border-gray-300 px-3 py-2"
+          className={inputClass}
+          placeholder="A short summary that will appear on the card."
         />
         {errors.description && (
-          <p className="mt-1 text-sm text-red-600">{errors.description}</p>
+          <p className={errorClass}>{errors.description}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="youtubeUrl" className="mb-1 block text-sm font-medium">
-          YouTube URL
-        </label>
-        <input
-          id="youtubeUrl"
-          type="text"
-          value={youtubeUrl}
-          onChange={(e) => setYoutubeUrl(e.target.value)}
-          className="w-full rounded border border-gray-300 px-3 py-2"
-        />
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className={fieldWrap}>
+          <label htmlFor="youtubeUrl" className={labelClass}>
+            YouTube URL
+          </label>
+          <input
+            id="youtubeUrl"
+            type="text"
+            value={youtubeUrl}
+            onChange={(e) => setYoutubeUrl(e.target.value)}
+            className={inputClass}
+            placeholder="https://youtube.com/..."
+          />
+        </div>
+
+        <div className={fieldWrap}>
+          <label htmlFor="githubUrl" className={labelClass}>
+            GitHub URL
+          </label>
+          <input
+            id="githubUrl"
+            type="text"
+            value={githubUrl}
+            onChange={(e) => setGithubUrl(e.target.value)}
+            className={inputClass}
+            placeholder="https://github.com/..."
+          />
+        </div>
       </div>
 
-      <div>
-        <label htmlFor="githubUrl" className="mb-1 block text-sm font-medium">
-          GitHub URL
-        </label>
-        <input
-          id="githubUrl"
-          type="text"
-          value={githubUrl}
-          onChange={(e) => setGithubUrl(e.target.value)}
-          className="w-full rounded border border-gray-300 px-3 py-2"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="techStack" className="mb-1 block text-sm font-medium">
+      <div className={fieldWrap}>
+        <label htmlFor="techStack" className={labelClass}>
           Tech Stack
         </label>
         <input
@@ -145,48 +157,57 @@ export function ProjectForm({
           value={techStackStr}
           onChange={(e) => setTechStackStr(e.target.value)}
           placeholder="React, TypeScript, Node.js"
-          className="w-full rounded border border-gray-300 px-3 py-2"
+          className={inputClass}
         />
-        <p className="mt-1 text-xs text-gray-500">Comma-separated</p>
+        <p className={hintClass}>Comma-separated</p>
       </div>
 
-      <div>
-        <label htmlFor="content" className="mb-1 block text-sm font-medium">
+      <div className={fieldWrap}>
+        <label htmlFor="content" className={labelClass}>
           Content
         </label>
         <textarea
           id="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          rows={10}
-          className="w-full rounded border border-gray-300 px-3 py-2 font-mono text-sm"
-          placeholder="Markdown content..."
+          rows={12}
+          className={`${inputClass} font-mono text-[13px] leading-relaxed`}
+          placeholder="# Markdown content..."
         />
-        {errors.content && (
-          <p className="mt-1 text-sm text-red-600">{errors.content}</p>
-        )}
+        {errors.content && <p className={errorClass}>{errors.content}</p>}
       </div>
 
-      <div className="flex items-center gap-2">
+      <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-outline-variant/30 bg-surface-container-low/40 px-4 py-3 transition-colors hover:bg-surface-container-low/60">
         <input
           id="published"
           type="checkbox"
           checked={published}
           onChange={(e) => setPublished(e.target.checked)}
-          className="rounded border-gray-300"
+          className="h-4 w-4 accent-primary"
         />
-        <label htmlFor="published" className="text-sm font-medium">
-          Published
-        </label>
-      </div>
+        <div>
+          <div className="font-label text-xs font-medium uppercase tracking-[0.16em] text-on-surface">
+            Published
+          </div>
+          <div className="font-body text-xs text-on-surface-variant">
+            Visible to visitors on the public portfolio.
+          </div>
+        </div>
+      </label>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-      >
-        {mode === "create" ? "Create Project" : "Update Project"}
-      </button>
+      <div className="flex items-center justify-end gap-3 border-t border-outline-variant/20 pt-6">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-label text-sm font-medium text-background transition-all duration-200 hover:bg-primary-container hover:shadow-[0_0_24px_-4px_var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:shadow-none"
+        >
+          {isSubmitting
+            ? "Saving..."
+            : mode === "create"
+              ? "Create Project"
+              : "Update Project"}
+        </button>
+      </div>
     </form>
   );
 }

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Green-based dark palette */
+  /* Colors — Green-based dark palette (defaults; overridden by [data-theme]) */
   --color-background: #101210;
   --color-surface: #101210;
   --color-surface-container-lowest: #0b0d0b;
@@ -19,11 +19,43 @@
   --color-on-surface-variant: #b8c9be;
   --color-outline: #7d9a87;
   --color-outline-variant: #3a4f40;
+  --color-danger: #f87171;
+  --color-danger-container: #7f1d1d;
 
   /* Fonts */
   --font-headline: "Manrope", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-label: "Space Grotesk", sans-serif;
+}
+
+/* Light theme — warm off-white with the same green accent */
+[data-theme="light"] {
+  --color-background: #f4f7f1;
+  --color-surface: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef3ea;
+  --color-surface-container: #e5ece0;
+  --color-surface-container-high: #d6ddd0;
+  --color-surface-container-highest: #c4ccbd;
+  --color-surface-bright: #ffffff;
+  --color-primary: #0f9a45;
+  --color-primary-container: #27f576;
+  --color-secondary: #9a7a1f;
+  --color-secondary-container: #e8c170;
+  --color-tertiary: #2f7aa8;
+  --color-on-surface: #131612;
+  --color-on-surface-variant: #4a5a4f;
+  --color-outline: #6b7f72;
+  --color-outline-variant: #c5d1c9;
+  --color-danger: #b91c1c;
+  --color-danger-container: #fecaca;
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
 }
 
 /* Full-viewport scroll-snap container */

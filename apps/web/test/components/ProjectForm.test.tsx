@@ -116,7 +116,7 @@ describe("ProjectForm", () => {
     render(<ProjectForm mode="create" onSubmit={mockOnSubmit} isSubmitting />);
 
     expect(
-      screen.getByRole("button", { name: /create project/i }),
+      screen.getByRole("button", { name: /saving|create project/i }),
     ).toBeDisabled();
   });
 

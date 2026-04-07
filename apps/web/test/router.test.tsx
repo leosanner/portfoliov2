@@ -81,14 +81,16 @@ describe("Router", () => {
     expect(screen.getByText(/sign in with google/i)).toBeInTheDocument();
   });
 
-  it("renders admin dashboard at /admin", async () => {
+  it("renders projects list at /admin/projects", async () => {
     mockUseSession.mockReturnValue({
       data: { user: { id: "1", name: "Admin" }, session: {} },
       isPending: false,
     } as ReturnType<typeof authClient.useSession>);
 
-    renderAtPath("/admin");
-    expect(await screen.findByText("Projects")).toBeInTheDocument();
+    renderAtPath("/admin/projects");
+    expect(
+      await screen.findByRole("heading", { name: "Projects" }),
+    ).toBeInTheDocument();
   });
 
   it("renders not found for unknown routes", () => {
