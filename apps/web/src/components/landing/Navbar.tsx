@@ -3,8 +3,7 @@ import { ContactButton } from "../ui/contact-button";
 
 const navLinks = [
   { label: "Projetos", href: "/projects", route: true },
-  { label: "Sobre", href: "#about", route: false },
-  { label: "Contato", href: "#contact", route: false },
+  { label: "Sobre", href: "/about", route: true },
 ] as const;
 
 const linkClassName =
@@ -14,9 +13,12 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <span className="logo-fill font-headline text-lg font-bold tracking-tight cursor-pointer">
+        <Link
+          href="/"
+          className="logo-fill font-headline text-lg font-bold tracking-tight cursor-pointer"
+        >
           Leonardo Sanner
-        </span>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) =>

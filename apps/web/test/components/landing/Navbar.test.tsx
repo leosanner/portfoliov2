@@ -8,9 +8,10 @@ describe("Navbar", () => {
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 
-  it("displays the logo text", () => {
+  it("displays the logo as a link to the landing page", () => {
     render(<Navbar />);
-    expect(screen.getByText("Leonardo Sanner")).toBeInTheDocument();
+    const logo = screen.getByRole("link", { name: /leonardo sanner/i });
+    expect(logo).toHaveAttribute("href", "/");
   });
 
   it("contains anchor links for sections", () => {
@@ -21,12 +22,11 @@ describe("Navbar", () => {
     );
     expect(screen.getByRole("link", { name: /sobre/i })).toHaveAttribute(
       "href",
-      "#about",
+      "/about",
     );
-    expect(screen.getByRole("link", { name: /contato/i })).toHaveAttribute(
-      "href",
-      "#contact",
-    );
+    expect(
+      screen.queryByRole("link", { name: /contato/i }),
+    ).not.toBeInTheDocument();
   });
 
   it("has a CTA button with contact text", () => {
@@ -67,7 +67,7 @@ describe("Navbar", () => {
 
     it("logo text has color fill animation class", () => {
       render(<Navbar />);
-      const logo = screen.getByText("Leonardo Sanner");
+      const logo = screen.getByRole("link", { name: /leonardo sanner/i });
       expect(logo).toHaveClass("logo-fill");
     });
   });
