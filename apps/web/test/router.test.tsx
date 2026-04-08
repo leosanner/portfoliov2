@@ -71,6 +71,13 @@ describe("Router", () => {
     expect(await screen.findByText(/construindo/i)).toBeInTheDocument();
   });
 
+  it("renders projects page at /projects", async () => {
+    renderAtPath("/projects");
+    expect(
+      await screen.findByRole("heading", { name: "Projetos" }),
+    ).toBeInTheDocument();
+  });
+
   it("renders project page at /projects/:slug", () => {
     renderAtPath("/projects/my-project");
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
