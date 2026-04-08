@@ -1,10 +1,14 @@
+import { Link } from "wouter";
 import { ContactButton } from "../ui/contact-button";
 
 const navLinks = [
-  { label: "Projetos", href: "#projects" },
-  { label: "Sobre", href: "#about" },
-  { label: "Contato", href: "#contact" },
+  { label: "Projetos", href: "/projects", route: true },
+  { label: "Sobre", href: "#about", route: false },
+  { label: "Contato", href: "#contact", route: false },
 ] as const;
+
+const linkClassName =
+  "relative font-label text-sm tracking-wide text-on-surface-variant transition-all duration-300 ease-out hover:text-primary nav-link-underline";
 
 export function Navbar() {
   return (
@@ -15,15 +19,17 @@ export function Navbar() {
         </span>
 
         <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="relative font-label text-sm tracking-wide text-on-surface-variant transition-all duration-300 ease-out hover:text-primary nav-link-underline"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.route ? (
+              <Link key={link.href} href={link.href} className={linkClassName}>
+                {link.label}
+              </Link>
+            ) : (
+              <a key={link.href} href={link.href} className={linkClassName}>
+                {link.label}
+              </a>
+            ),
+          )}
         </div>
 
         <ContactButton />
