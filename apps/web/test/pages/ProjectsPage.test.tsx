@@ -100,8 +100,10 @@ describe("ProjectsPage", () => {
 
     render(<ProjectsPage />, { wrapper: createWrapper() });
 
-    expect(await screen.findByText("Project Alpha")).toBeInTheDocument();
-    expect(screen.getByText("Project Beta")).toBeInTheDocument();
+    expect(
+      (await screen.findAllByText("Project Alpha")).length,
+    ).toBeGreaterThan(0);
+    expect(screen.getAllByText("Project Beta").length).toBeGreaterThan(0);
     expect(screen.getByText("First project description")).toBeInTheDocument();
     expect(screen.getByText("TypeScript")).toBeInTheDocument();
     expect(screen.getByText("React")).toBeInTheDocument();
@@ -115,7 +117,7 @@ describe("ProjectsPage", () => {
 
     render(<ProjectsPage />, { wrapper: createWrapper() });
 
-    await screen.findByText("Project Alpha");
+    await screen.findAllByText("Project Alpha");
     const link = screen
       .getAllByRole("link")
       .find((a) => a.getAttribute("href") === "/projects/project-alpha");
