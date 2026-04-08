@@ -1,6 +1,7 @@
 // App router
 import { Route, Switch, Redirect } from "wouter";
 import { HomePage } from "./pages/HomePage";
+import { ProjectsPage } from "./pages/ProjectsPage";
 import { ProjectPage } from "./pages/ProjectPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProjectsListPage } from "./pages/admin/ProjectsListPage";
@@ -14,6 +15,7 @@ export function App() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/projects" component={ProjectsPage} />
       <Route path="/projects/:slug">
         {(params) => <ProjectPage slug={params.slug} />}
       </Route>
