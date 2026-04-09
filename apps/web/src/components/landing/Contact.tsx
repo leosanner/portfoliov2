@@ -59,7 +59,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="snap-section relative items-center justify-center pt-20 md:pt-0"
+      className="snap-section relative items-center justify-center py-24 md:py-20"
     >
       {/* Radial glow behind heading */}
       <div

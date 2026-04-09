@@ -2,12 +2,21 @@ import { motion } from "framer-motion";
 
 const techStack = [
   {
-    category: "Frontend",
-    items: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    category: "AI / ML",
+    items: ["Python", "Machine Learning", "Deep Learning", "NLP"],
   },
-  { category: "Backend", items: ["Hono", "Node.js", "Cloudflare Workers"] },
-  { category: "Data", items: ["D1 / SQLite", "Drizzle ORM", "KV Storage"] },
-  { category: "Infra", items: ["Cloudflare", "GitHub Actions", "Wrangler"] },
+  {
+    category: "Frontend",
+    items: ["TypeScript", "React", "Next.js"],
+  },
+  {
+    category: "Backend & Data",
+    items: ["Spring Boot", "PostgreSQL", "MongoDB"],
+  },
+  {
+    category: "Cloud & DevOps",
+    items: ["Azure", "Cloudflare", "Vercel", "GitHub Actions"],
+  },
 ];
 
 const pillVariants = {
@@ -46,15 +55,14 @@ export function About() {
           </span>
 
           <h2 className="font-headline mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-on-surface md:text-4xl lg:text-5xl">
-            Engenheiro de software focado em{" "}
-            <span className="text-primary">Cloudflare</span> e na{" "}
-            <span className="text-secondary">edge</span>.
+            Antes do código, o <span className="text-primary">problema</span>.
           </h2>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-on-surface-variant font-body">
-            Construo aplicações full-stack que rodam o mais perto possível do
-            usuário. Do banco de dados à interface, tudo na edge — rápido,
-            resiliente, e sem servidores tradicionais.
+            Há cerca de um ano atuo com desenvolvimento prestando serviço e
+            consultoria. Meu foco não está na tecnologia em si, mas em entender
+            o problema do cliente e encontrar o caminho mais simples para
+            resolvê-lo — a stack vem depois.
           </p>
 
           <div className="mt-8 flex items-center gap-4">
