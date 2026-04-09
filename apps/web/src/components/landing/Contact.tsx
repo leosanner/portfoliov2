@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, ArrowUpRight } from "lucide-react";
 import type { SVGProps } from "react";
+import { Footer } from "./Footer";
 
 function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -22,15 +23,15 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "leosanner.dev@gmail.com",
-    href: "mailto:leosanner.dev@gmail.com",
+    value: "leosanner12@gmail.com",
+    href: "mailto:leosanner12@gmail.com",
     color: "var(--color-primary)",
   },
   {
     icon: LinkedinIcon,
     label: "LinkedIn",
-    value: "/in/leosanner",
-    href: "https://linkedin.com/in/leosanner",
+    value: "/in/leonardo-sanner",
+    href: "https://www.linkedin.com/in/leonardo-sanner-86b27a305/",
     color: "var(--color-tertiary)",
   },
   {
@@ -137,12 +138,7 @@ export function Contact() {
         </motion.div>
       </div>
 
-      {/* Footer line */}
-      <div className="mt-auto py-6 text-center">
-        <span className="font-label text-[11px] tracking-widest text-outline/50">
-          Leonardo Sanner &copy; {new Date().getFullYear()}
-        </span>
-      </div>
+      <Footer />
     </section>
   );
 }

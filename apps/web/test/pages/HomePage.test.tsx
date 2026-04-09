@@ -5,7 +5,7 @@ import { HomePage } from "../../src/pages/HomePage";
 describe("HomePage", () => {
   it("renders the navbar", () => {
     render(<HomePage />);
-    expect(screen.getByRole("navigation")).toBeInTheDocument();
+    expect(screen.getAllByRole("navigation").length).toBeGreaterThan(0);
   });
 
   it("renders the hero heading", () => {
