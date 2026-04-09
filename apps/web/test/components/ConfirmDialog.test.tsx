@@ -70,7 +70,7 @@ describe("ConfirmDialog", () => {
     render(<ConfirmDialog {...defaultProps} variant="danger" />);
 
     const confirmBtn = screen.getByRole("button", { name: /confirm/i });
-    expect(confirmBtn.className).toMatch(/red/);
+    expect(confirmBtn.className).toMatch(/danger/);
   });
 
   it("uses default labels when not provided", () => {

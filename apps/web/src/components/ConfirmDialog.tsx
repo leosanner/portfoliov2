@@ -36,37 +36,42 @@ export function ConfirmDialog({
 
   if (!open) return null;
 
+  const confirmClass =
+    variant === "danger"
+      ? "bg-danger text-background hover:bg-danger/90 hover:shadow-[0_0_24px_-4px_var(--color-danger)]"
+      : "bg-primary text-background hover:bg-primary-container hover:shadow-[0_0_24px_-4px_var(--color-primary)]";
+
   return (
     <div
       data-testid="dialog-backdrop"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
       onClick={onCancel}
     >
       <div
         role="dialog"
         aria-modal="true"
-        className="mx-4 w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
+        className="mx-4 w-full max-w-md rounded-2xl border border-outline-variant/30 bg-surface-container p-6 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="mb-2 text-lg font-semibold">{title}</h2>
-        <p className="mb-6 text-gray-600">{message}</p>
+        <h2 className="font-headline text-xl font-bold text-on-surface">
+          {title}
+        </h2>
+        <p className="mt-3 font-body text-sm leading-relaxed text-on-surface-variant">
+          {message}
+        </p>
 
-        <div className="flex justify-end gap-3">
+        <div className="mt-6 flex justify-end gap-2">
           <button
             type="button"
             onClick={onCancel}
-            className="rounded px-4 py-2 text-gray-700 hover:bg-gray-100"
+            className="rounded-full px-5 py-2 font-label text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
           >
             {cancelLabel}
           </button>
           <button
             type="button"
             onClick={onConfirm}
-            className={`rounded px-4 py-2 text-white ${
-              variant === "danger"
-                ? "bg-red-600 hover:bg-red-700"
-                : "bg-blue-600 hover:bg-blue-700"
-            }`}
+            className={`rounded-full px-5 py-2 font-label text-sm font-medium transition-all duration-200 ${confirmClass}`}
           >
             {confirmLabel}
           </button>

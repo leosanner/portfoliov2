@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { Redirect } from "wouter";
 import { authClient } from "../lib/auth";
 
 export function LoginPage() {
   const { data: session, isPending } = authClient.useSession();
-  const [error, setError] = useState<string | null>(null);
+  const unauthorized =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("error") === "unauthorized";
 
   if (isPending) {
     return <p>Loading...</p>;
@@ -15,15 +16,10 @@ export function LoginPage() {
   }
 
   async function handleGoogleSignIn() {
-    try {
-      setError(null);
-      await authClient.signIn.social({
-        provider: "google",
-        callbackURL: `${window.location.origin}/admin`,
-      });
-    } catch {
-      setError("Failed to sign in. Please try again.");
-    }
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/admin",
+    });
   }
 
   return (
@@ -31,9 +27,12 @@ export function LoginPage() {
       <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
         <h1 className="mb-6 text-center text-2xl font-bold">Portfolio Admin</h1>
 
-        {error && (
-          <p className="mb-4 rounded bg-red-50 p-3 text-sm text-red-600">
-            {error}
+        {unauthorized && (
+          <p
+            role="alert"
+            className="mb-4 rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+          >
+            This account is not authorized to access the admin area.
           </p>
         )}
 

@@ -18,6 +18,13 @@ vi.mock("../src/lib/api", () => ({
         projects: {
           $get: vi.fn().mockResolvedValue(Response.json({ projects: [] })),
         },
+        me: {
+          $get: vi
+            .fn()
+            .mockResolvedValue(
+              Response.json({ ok: true, email: "admin@example.com" }),
+            ),
+        },
       },
     },
   },
@@ -61,7 +68,14 @@ describe("Router", () => {
 
   it("renders home page at /", async () => {
     renderAtPath("/");
-    expect(await screen.findByText("Portfolio")).toBeInTheDocument();
+    expect(await screen.findByText(/construindo/i)).toBeInTheDocument();
+  });
+
+  it("renders projects page at /projects", async () => {
+    renderAtPath("/projects");
+    expect(
+      await screen.findByRole("heading", { name: "Projetos" }),
+    ).toBeInTheDocument();
   });
 
   it("renders project page at /projects/:slug", () => {
@@ -74,18 +88,20 @@ describe("Router", () => {
     expect(screen.getByText(/sign in with google/i)).toBeInTheDocument();
   });
 
-  it("renders admin dashboard at /admin", async () => {
+  it("renders projects list at /admin/projects", async () => {
     mockUseSession.mockReturnValue({
       data: { user: { id: "1", name: "Admin" }, session: {} },
       isPending: false,
     } as ReturnType<typeof authClient.useSession>);
 
-    renderAtPath("/admin");
-    expect(await screen.findByText("Projects")).toBeInTheDocument();
+    renderAtPath("/admin/projects");
+    expect(
+      await screen.findByRole("heading", { name: "Projects" }),
+    ).toBeInTheDocument();
   });
 
   it("renders not found for unknown routes", () => {
     renderAtPath("/unknown-route");
-    expect(screen.getByText(/not found/i)).toBeInTheDocument();
+    expect(screen.getByText(/página não encontrada/i)).toBeInTheDocument();
   });
 });

@@ -1,1 +1,153 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors — Green-based dark palette (defaults; overridden by [data-theme]) */
+  --color-background: #101210;
+  --color-surface: #101210;
+  --color-surface-container-lowest: #0b0d0b;
+  --color-surface-container-low: #1a1e1a;
+  --color-surface-container: #1e221e;
+  --color-surface-container-high: #282c28;
+  --color-surface-container-highest: #333733;
+  --color-surface-bright: #383c38;
+  --color-primary: #27f576;
+  --color-primary-container: #1bc45e;
+  --color-secondary: #e8c170;
+  --color-secondary-container: #b89530;
+  --color-tertiary: #7ecbf5;
+  --color-on-surface: #e2e5e2;
+  --color-on-surface-variant: #b8c9be;
+  --color-outline: #7d9a87;
+  --color-outline-variant: #3a4f40;
+  --color-danger: #f87171;
+  --color-danger-container: #7f1d1d;
+
+  /* Fonts */
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+/* Light theme — warm off-white with the same green accent */
+[data-theme="light"] {
+  --color-background: #f4f7f1;
+  --color-surface: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef3ea;
+  --color-surface-container: #e5ece0;
+  --color-surface-container-high: #d6ddd0;
+  --color-surface-container-highest: #c4ccbd;
+  --color-surface-bright: #ffffff;
+  --color-primary: #0f9a45;
+  --color-primary-container: #27f576;
+  --color-secondary: #9a7a1f;
+  --color-secondary-container: #e8c170;
+  --color-tertiary: #2f7aa8;
+  --color-on-surface: #131612;
+  --color-on-surface-variant: #4a5a4f;
+  --color-outline: #6b7f72;
+  --color-outline-variant: #c5d1c9;
+  --color-danger: #b91c1c;
+  --color-danger-container: #fecaca;
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+}
+
+/* Full-viewport scroll-snap container */
+.snap-container {
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+.snap-section {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  /* Safe vertical centering — prevents content clipping when taller than viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .snap-section {
+    height: 100dvh;
+    min-height: auto;
+  }
+}
+
+/* Nav link underline reveal animation */
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease-out;
+}
+
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Logo color fill animation */
+.logo-fill {
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 50%,
+    var(--color-on-surface) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 300ms ease-out;
+}
+
+.logo-fill:hover {
+  background-position: left;
+}
+
+/* Flip card sliding code blocks animation */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

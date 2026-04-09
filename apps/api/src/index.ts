@@ -1,3 +1,4 @@
+// API entry point
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { Env } from "./env";
@@ -5,6 +6,7 @@ import { createAuth } from "./auth";
 import { createDb } from "./db";
 import { adminOnly } from "./auth/middleware";
 import { adminProjectRoutes } from "./routes/projects.admin";
+import { adminMeRoutes } from "./routes/admin.me";
 import { publicProjectRoutes } from "./routes/projects.public";
 
 const app = new Hono<Env>()
@@ -31,6 +33,7 @@ const app = new Hono<Env>()
   })
   .get("/health", (c) => c.json({ status: "ok" }))
   .route("/api/admin", adminProjectRoutes)
+  .route("/api/admin", adminMeRoutes)
   .route("/api", publicProjectRoutes)
   .on(["POST", "GET"], "/api/auth/*", (c) => {
     const auth = createAuth(c.env);

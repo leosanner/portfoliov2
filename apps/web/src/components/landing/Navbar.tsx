@@ -1,0 +1,41 @@
+import { Link } from "wouter";
+import { ContactButton } from "../ui/contact-button";
+
+const navLinks = [
+  { label: "Projetos", href: "/projects", route: true },
+  { label: "Sobre", href: "/about", route: true },
+] as const;
+
+const linkClassName =
+  "relative font-label text-sm tracking-wide text-on-surface-variant transition-all duration-300 ease-out hover:text-primary nav-link-underline";
+
+export function Navbar() {
+  return (
+    <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          className="logo-fill font-headline text-lg font-bold tracking-tight cursor-pointer"
+        >
+          Leonardo Sanner
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) =>
+            link.route ? (
+              <Link key={link.href} href={link.href} className={linkClassName}>
+                {link.label}
+              </Link>
+            ) : (
+              <a key={link.href} href={link.href} className={linkClassName}>
+                {link.label}
+              </a>
+            ),
+          )}
+        </div>
+
+        <ContactButton />
+      </div>
+    </nav>
+  );
+}
